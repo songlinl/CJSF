@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      package="com.example.hellotabwidget"
+      android:versionCode="1"
+      android:versionName="1.0">
+    <uses-sdk android:minSdkVersion="7" android:targetSdkVersion="10" />
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    
+    <application android:icon="@drawable/ic_launcher" android:label="CJSF Radio">
+        <activity android:name=".HelloTabWidget"
+                  android:label="CJSF Radio"
+                  android:theme="@android:style/Theme.Black.NoTitleBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+         </activity>
+       
+		<activity android:name=".MainActivity"></activity>
+	
+		<service android:exported="false" android:name=".MusicService">
+		    <intent-filter>
+		        <action android:name="com.example.hellotabwidget.action.PLAY" />
+		        <action android:name="com.example.hellotabwidget.action.PAUSE" />
+		    </intent-filter>
+		    <intent-filter>
+		        <action android:name="com.example.hellotabwidget.action.URL" />
+		        <data android:scheme="http" />
+		    </intent-filter>
+		</service>
+		<receiver android:name=".MusicIntentReceiver">
+		     <intent-filter>
+		         <action android:name="android.media.AUDIO_BECOMING_NOISY" />
+		     </intent-filter>
+		</receiver>
+		<activity android:name=".AlbumsActivity"></activity>
+		<activity android:name=".AboutActivity"></activity>
+    </application>
+</manifest>
